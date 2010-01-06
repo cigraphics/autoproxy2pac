@@ -21,9 +21,25 @@ def getBrowserFamily():
     ua = os.environ['HTTP_USER_AGENT']
     
     if 'MSIE' in ua:
-        return 'IE'
+        return 'ie'
+    elif 'Firefox' in ua or 'Minefield' in ua:
+        return 'firefox'
     elif 'Chrome' in ua:
-        return 'Chrome'
+        return 'chrome'
+    elif 'Safari' in ua:
+        return 'safari'
+    else:
+        return None
+
+def getOSFamily():
+    ua = os.environ['HTTP_USER_AGENT']
+    
+    if 'Windows' in ua:
+        return 'win'
+    elif 'Mac OS X' in ua:
+        return 'mac'
+    elif 'Linux' in ua:
+        return 'linux'
     else:
         return None
 
