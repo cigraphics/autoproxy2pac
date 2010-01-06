@@ -1,5 +1,30 @@
 {% if url %}
-使用方法：将浏览器的“代理服务器自动配置脚本”设置为 {{url}}
+使用方法：将浏览器的“代理服务器自动配置脚本”设置为
+<input type="text" id="url" readonly value="{{url}}" size="50" onclick="document.getElementById('url').select();" />
+<span id="url_clippy" style="display:none;">{{url}}</span>
+<span id="clippy_tooltip" class="clippy-tooltip tooltipped" title="copy to clipboard">
+  <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" width="14" height="14" class="clippy" id="clippy" >
+  <param name="movie" value="/static/clippy.swf"/>
+  <param name="allowScriptAccess" value="always" />
+  <param name="quality" value="high" />
+  <param name="scale" value="noscale" />
+  <param NAME="FlashVars" value="id=url_clippy&amp;copied=&amp;copyto=">
+  <param name="bgcolor" value="#FFFFFF">
+  <param name="wmode" value="opaque">
+  <embed src="/static/clippy.swf"
+         width="14"
+         height="14"
+         name="clippy"
+         quality="high"
+         allowScriptAccess="always"
+         type="application/x-shockwave-flash"
+         pluginspage="http://www.macromedia.com/go/getflashplayer"
+         FlashVars="id=url_clippy&amp;copied=&amp;copyto="
+         bgcolor="#FFFFFF"
+         wmode="opaque"
+  />
+  </object>
+</span>
 {% else %}
   {% ifequal browser "IE" %}
   使用方法：Internet选项 - 连接 - 局域网设置，勾选“使用自动配置脚本”，“地址”设置为 file://c:/autoproxy.pac （请根据下载位置进行调整）
